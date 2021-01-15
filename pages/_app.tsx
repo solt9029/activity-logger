@@ -10,4 +10,4 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   )
 }
 
-export { App }
+export default App
