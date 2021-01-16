@@ -97,6 +97,17 @@ export default function IndexPage() {
               </Card.Body>
             </Card>
           </Col>
+          <Col xs={12} lg={6} style={{ marginBottom: '1rem' }}>
+            <Card>
+              <Card.Body style={{ padding: '1rem' }}>
+                <FontAwesomeIcon icon={faPlayCircle} style={{ marginRight: '1rem' }} />
+                読書
+                <div style={{ float: 'right' }}>
+                  <FontAwesomeIcon icon={faTrash} />
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
         </Row>
         <Link href="/new">
           <div style={buttonStyle} className="bg-dark">

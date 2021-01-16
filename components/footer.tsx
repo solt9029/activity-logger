@@ -7,11 +7,14 @@ export const Footer = () => (
     style={{
       textAlign: 'center',
       color: 'white',
-      padding: '0.5rem',
+      padding: '0.7rem',
       position: 'absolute',
       bottom: 0,
+      fontSize: '0.9rem',
     }}
   >
-    <small>Copyright © Kenshi Shiode. All Rights Reserved.</small>
+    <small>
+      Created by <a href="https://twitter.com/solt9029">Kenshi Shiode</a>
+    </small>
   </Container>
 )
