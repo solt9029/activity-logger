@@ -12,11 +12,14 @@ const buttonStyle: CSSProperties = {
   height: '60px',
   bottom: '1rem',
   right: '1rem',
-  backgroundColor: '#000',
   color: '#fff',
   borderRadius: '50px',
   textAlign: 'center',
-  boxShadow: '2px 2px 3px #999',
+  borderColor: '#fff',
+  borderWidth: '2px',
+  borderStyle: 'solid',
+  zIndex: 1000,
+  cursor: 'pointer',
 }
 
 export default function IndexPage() {
@@ -41,11 +44,6 @@ export default function IndexPage() {
 
   return (
     <>
-      <Navbar variant="dark" bg="dark" className="mb-3">
-        <Container>
-          <NavbarBrand>Activity Logger</NavbarBrand>
-        </Container>
-      </Navbar>
       <Container>
         <Row className="mb-5">
           <Col xs={12}>
@@ -100,11 +98,11 @@ export default function IndexPage() {
             </Card>
           </Col>
         </Row>
-        <div style={buttonStyle}>
-          <Link href="/new">
-            <FontAwesomeIcon icon={faPlus} style={{ marginTop: '18px', fontSize: '1.5rem' }} />
-          </Link>
-        </div>
+        <Link href="/new">
+          <div style={buttonStyle} className="bg-dark">
+            <FontAwesomeIcon icon={faPlus} style={{ marginTop: '16px', fontSize: '1.5rem' }} />
+          </div>
+        </Link>
       </Container>
     </>
   )
