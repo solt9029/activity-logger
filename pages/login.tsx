@@ -3,7 +3,7 @@ import Router from 'next/router'
 import { firebase } from '../utils/firebase'
 import { AuthContext } from '../contexts/Auth'
 
-export default function LoginPage(): JSX.Element {
+export default function LoginPage() {
   const { currentUser } = useContext(AuthContext)
 
   useEffect(() => {
