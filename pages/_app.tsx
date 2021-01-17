@@ -5,14 +5,17 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './_app.css'
 import { Navbar } from '../components/navbar'
 import { Footer } from '../components/footer'
+import { DatabaseProvider } from '../contexts/Database'
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <AuthProvider>
-        <Navbar />
-        <Component {...pageProps} />
-        <Footer />
+        <DatabaseProvider>
+          <Navbar />
+          <Component {...pageProps} />
+          <Footer />
+        </DatabaseProvider>
       </AuthProvider>
     </>
   )

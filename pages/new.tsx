@@ -1,27 +1,10 @@
-import { useEffect, useContext, useState } from 'react'
+import { useContext } from 'react'
 import Router from 'next/router'
-import { AuthContext } from '../contexts/Auth'
-import { useDatabaseRef } from '../utils/hooks'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
-import { Title } from '../interfaces'
+import { DatabaseContext } from '../contexts/Database'
 
 export default function LoginPage() {
-  const { currentUser } = useContext(AuthContext)
-  const titlesRef = useDatabaseRef('titles', currentUser?.uid)
-  const [titles, setTitles] = useState<Title[]>([])
-
-  useEffect(() => {
-    // TODO ここらへん全部contextにまとめた方がいい
-    titlesRef?.on('value', (snapshot) => {
-      setTitles(Object.entries(snapshot.val()).map((array) => array[1]) as Title[])
-    })
-  }, [titlesRef])
-
-  const handleClick = () => {
-    titlesRef?.push({
-      name: 'work',
-    }) && Router.push('/')
-  }
+  const { titles } = useContext(DatabaseContext)
 
   return (
     <Container>
