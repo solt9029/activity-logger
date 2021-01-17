@@ -4,34 +4,42 @@ import { CurrentActivityCard } from '../components/current-activity-card'
 import { FloatingButton } from '../components/floating-button'
 import { TitleCard } from '../components/title-card'
 import { AuthContext } from '../contexts/Auth'
+import { Activity } from '../interfaces'
+import { generateGoogleCalendarLink } from '../utils'
 import { useDatabaseRef } from '../utils/hooks'
 
 export default function IndexPage() {
   const { currentUser } = useContext(AuthContext)
-  const databaseRef = useDatabaseRef('current-activity', currentUser?.uid)
-  const [value, setValue] = useState<any>(null)
+  const currentActivityRef = useDatabaseRef('current-activity', currentUser?.uid)
+  const activityLogsRef = useDatabaseRef('activity-logs', currentUser?.uid)
+  const [currentActivity, setCurrentActivity] = useState<Activity | null>(null)
 
   useEffect(() => {
-    databaseRef?.on('value', (snapshot) => {
-      console.log(snapshot.val())
-      setValue(snapshot.val())
+    currentActivityRef?.on('value', (snapshot) => {
+      setCurrentActivity(snapshot.val())
+      // currentActivityRef?.set({
+      //   startedAt: '2020-10-12',
+      //   titleName: 'test',
+      // })
     })
-  }, [currentUser, setValue])
-
-  const handleClick = () => {
-    databaseRef?.set({
-      title: 'work',
-      startedAt: '2020-10-20',
-      finishedAt: null,
-    })
-  }
+  }, [currentUser, setCurrentActivity])
 
   return (
     <>
       <Container>
-        <Row className="mb-5">
-          <CurrentActivityCard />
-        </Row>
+        {currentActivity !== null && (
+          <Row className="mb-5">
+            <CurrentActivityCard
+              activity={currentActivity}
+              onClick={() => {
+                const finishedActivity = currentActivity
+                activityLogsRef?.push(currentActivity) &&
+                  currentActivityRef?.set(null) &&
+                  window.open(generateGoogleCalendarLink(finishedActivity.titleName), '_blank')
+              }}
+            />
+          </Row>
+        )}
         <Row className="mb-3">
           <Col xs={12}>次に開始する活動を選択してください</Col>
         </Row>
