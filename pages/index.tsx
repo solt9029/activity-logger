@@ -44,9 +44,9 @@ export default function IndexPage() {
           <Col xs={12}>次に開始する活動を選択してください</Col>
         </Row>
         <Row>
-          <TitleCard name="睡眠" />
-          <TitleCard name="読書" />
-          <TitleCard name="仕事" />
+          <TitleCard name="睡眠" onClick={() => {}} />
+          <TitleCard name="読書" onClick={() => {}} />
+          <TitleCard name="仕事" onClick={() => {}} />
         </Row>
         <FloatingButton />
       </Container>
