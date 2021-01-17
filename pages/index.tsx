@@ -61,7 +61,7 @@ export default function IndexPage() {
           </Col>
         </Row>
         <Row className="mb-3">
-          <Col xs={12}>開始する活動を選択してください</Col>
+          <Col xs={12}>次に開始する活動を選択してください</Col>
         </Row>
         <Row>
           <Col xs={12} lg={6} style={{ marginBottom: '1rem' }}>
