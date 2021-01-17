@@ -3,3 +3,7 @@ export interface Activity {
   startedAt: string
   finishedAt?: string
 }
+
+export interface Title {
+  name: string
+}
